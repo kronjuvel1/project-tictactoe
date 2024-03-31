@@ -8,7 +8,7 @@ const Gameboard = (() => {
     const render = () => {
         let boardHTML = "";
         gameboard.forEach((square, index) => {
-            boardHTML += `<div class="text-9xl h-36 w-32 border border-black shadow-outline text-center  cursor-pointer select-none" id="square-${index}">${square}</div>`;
+            boardHTML += `<div class="text-8xl leading-[0.9] lg:text-9xl size-24 lg:size-36 border border-black shadow-outline text-center cursor-pointer select-none" id="square-${index}">${square}</div>`;
         })
         document.querySelector("#gameboard").innerHTML = boardHTML;
 
