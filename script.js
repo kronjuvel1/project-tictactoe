@@ -1,9 +1,10 @@
 const startBtn = document.querySelector('#start-btn');
+const themeController = document.querySelector('#theme-controller');
 
 const Gameboard = (() => {
     let gameboard = ["", "", "",
-                    "", "", "",
-                    "", "", ""];
+        "", "", "",
+        "", "", ""];
 
     const render = () => {
         let boardHTML = "";

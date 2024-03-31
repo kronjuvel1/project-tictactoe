@@ -2,7 +2,7 @@
 module.exports = {
   content: ["./*.{html,js}"],
   daisyui: {
-    themes: ["light", "dark", "lofi"],
+    themes: ["light", "dark", "lofi", "black"],
   },
   theme: {
     extend: {
