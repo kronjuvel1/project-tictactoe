@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: Inter;
+    src: url(./resources/font/Inter.ttc);
+}
+
+@font-face {
+    font-family: InterVariable;
+    src: url(./resources/font/InterVariable.ttf);
+}
+
+@font-face {
+    font-family: InterVariable-Italic;
+    src: url(./resources/font/InterVariable-Italic.ttf);
+}

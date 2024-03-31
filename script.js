@@ -2,17 +2,17 @@ const startBtn = document.querySelector('#start-btn');
 
 const Gameboard = (() => {
     let gameboard = ["", "", "",
-        "", "", "",
-        "", "", ""];
+                    "", "", "",
+                    "", "", ""];
 
     const render = () => {
         let boardHTML = "";
         gameboard.forEach((square, index) => {
-            boardHTML += `<div class="square" id="square-${index}">${square}</div>`;
+            boardHTML += `<div class="text-9xl h-36 w-32 border border-black shadow-outline text-center  cursor-pointer select-none" id="square-${index}">${square}</div>`;
         })
         document.querySelector("#gameboard").innerHTML = boardHTML;
 
-        const squares = document.querySelectorAll(".square");
+        const squares = document.querySelectorAll('[id^="square-"]');
         squares.forEach((square) => {
             square.addEventListener("click", Game.handleClick);
         });
@@ -38,12 +38,9 @@ const Game = (() => {
     let gameOver;
 
     const start = () => {
-        const player1Name = document.querySelector("#player1").value.trim() || "Player 1";
-        const player2Name = document.querySelector("#player2").value.trim() || "Player 2";
-        
         players = [
-            createPlayer(player1Name, "X"),
-            createPlayer(player2Name, "O"),
+            createPlayer(document.querySelector("#player1").value, "X"),
+            createPlayer(document.querySelector("#player2").value, "O"),
         ];
 
         currentPlayerIndex = 0;
