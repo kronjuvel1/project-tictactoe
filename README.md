@@ -34,7 +34,7 @@ The code is organized to minimize the use of global variables and follows the mo
 4. Interface Improvements: The interface was enhanced to include player name input, a game start/restart button, and a display element showing game results.
 
 ## Additional Resources
-- [Building a house from the inside out](https://www.ayweb.dev/blog/building-a-house-from-the-inside-out): This article provides a helpful approach to organizing and structuring code, which can be applied to this project.
+- [Building a house from the inside out](https://www.ayweb.dev/blog/building-a-house-from-the-inside-out): This article provided me with a helpful approach to organizing and structuring this project's code.
 
 ## Contributing
 Contributions to the project are welcome! If you have any suggestions for improvements or bug fixes, feel free to open an issue or submit a pull request.
