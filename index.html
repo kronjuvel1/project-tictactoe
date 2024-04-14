@@ -16,7 +16,7 @@
         </div>
         <div class="flex-none">
             <ul class="menu menu-horizontal px-1 items-center">
-                <li><a href="https://github.com/kronjuvel1" target="_blank">Github Link</a></li>
+                <li><a href="https://github.com/kronjuvel1/project-tictactoe" target="_blank">Github Link</a></li>
             </ul>
         </div>
     </div>
@@ -41,8 +41,17 @@
         </div>
         <!-- </div> -->
     </div>
-    <div id="message" class=""></div>
-    </div>
+    <dialog id="modal" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 id="message" class="font-bold text-lg"></h3>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
 </body>
 
 </html>

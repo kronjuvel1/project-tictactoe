@@ -1,9 +1,13 @@
 const startBtn = document.querySelector('#start-btn');
 const themeController = document.querySelector('#theme-controller');
+const modal = document.querySelector('#modal');
+
+let playerScore = [0, 0];
 
 const displayController = (() => {
     const renderMessage = (message) => {
-        document.querySelector("#message").innerHTML = message;
+        const messageElement = document.querySelector("#message");
+        messageElement.textContent = message;
     }
     return { renderMessage };
 })();
@@ -63,13 +67,17 @@ const Game = (() => {
         if (Gameboard.getGameBoard()[index] !== "") return;
 
         Gameboard.update(index, players[currentPlayerIndex].mark);
-
         if (checkForWin(Gameboard.getGameBoard(), players[currentPlayerIndex].mark)) {
             gameOver = true;
             displayController.renderMessage(`${players[currentPlayerIndex].name} wins!`);
+            playerScore[currentPlayerIndex]++;
+            modal.showModal();
+            restart();
         } else if (checkForTie(Gameboard.getGameBoard())) {
             gameOver = true;
             displayController.renderMessage("It's a tie!");
+            modal.showModal();
+            restart();
         }
 
         currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
@@ -85,7 +93,6 @@ const Game = (() => {
         }
         Gameboard.render();
         gameOver = false;
-        document.querySelector("#message").innerHTML = "";
     }
 
     return {
