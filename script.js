@@ -1,8 +1,13 @@
-const startBtn = document.querySelector('#start-btn');
-const themeController = document.querySelector('#theme-controller');
-const modal = document.querySelector('#modal');
-
-let playerScore = [0, 0];
+const playerScoreTracker = () => {
+    let playerScore = [0, 0];
+    const player1Score = document.querySelector('#player1-score');
+    const player2Score = document.querySelector('#player2-score');
+    const updateScore = () => {
+        player1Score.textContent = playerScore[0];
+        player2Score.textContent = playerScore[1];
+    };
+    return { playerScore, updateScore };
+}
 
 const displayController = (() => {
     const renderMessage = (message) => {
@@ -48,6 +53,7 @@ const Game = (() => {
     let players = [];
     let currentPlayerIndex;
     let gameOver;
+    const { playerScore, updateScore } = playerScoreTracker();
 
     const start = () => {
         players = [
@@ -66,11 +72,13 @@ const Game = (() => {
         const index = parseInt(event.target.id.split("-")[1]);
         if (Gameboard.getGameBoard()[index] !== "") return;
 
+        const modal = document.querySelector('#modal');
         Gameboard.update(index, players[currentPlayerIndex].mark);
         if (checkForWin(Gameboard.getGameBoard(), players[currentPlayerIndex].mark)) {
             gameOver = true;
             displayController.renderMessage(`${players[currentPlayerIndex].name} wins!`);
             playerScore[currentPlayerIndex]++;
+            updateScore();
             modal.showModal();
             restart();
         } else if (checkForTie(Gameboard.getGameBoard())) {
@@ -127,6 +135,24 @@ function checkForWin(board) {
 function checkForTie(board) {
     return board.every((square) => square !== "");
 }
+
+const themeControllerFunction = () => {
+    const themeController = document.querySelector('#theme-controller');
+    themeController.addEventListener('click', () => {
+        const htmlElement = document.querySelector('html');
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'lofi' ? 'black' : 'lofi';
+        htmlElement.setAttribute('data-theme', newTheme);
+    });
+}
+themeControllerFunction();
+
+const startBtn = document.querySelector('#start-btn');
+startBtn.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        startBtn.click();
+    }
+});
 
 const restartButton = document.querySelector('#restart-btn');
 restartButton.addEventListener("click", () => {
