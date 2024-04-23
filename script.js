@@ -136,17 +136,6 @@ function checkForTie(board) {
     return board.every((square) => square !== "");
 }
 
-const themeControllerFunction = () => {
-    const themeController = document.querySelector('#theme-controller');
-    themeController.addEventListener('click', () => {
-        const htmlElement = document.querySelector('html');
-        const currentTheme = htmlElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'lofi' ? 'black' : 'lofi';
-        htmlElement.setAttribute('data-theme', newTheme);
-    });
-}
-themeControllerFunction();
-
 const startBtn = document.querySelector('#start-btn');
 startBtn.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
